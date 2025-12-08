@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Recurring Deposits</title>
+</head>
+<body>
+
+<h2>My Recurring Deposits</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>RD ID</th>
+        <th>Monthly Amount</th>
+        <th>Interest Rate</th>
+        <th>Months</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+    </tr>
+
+    <tr th:each="rd : ${rds}">
+        <td th:text="${rd.rdId}"></td>
+        <td th:text="${rd.monthlyAmount}"></td>
+        <td th:text="${rd.interestRate}"></td>
+        <td th:text="${rd.durationMonths}"></td>
+        <td th:text="${rd.startDate}"></td>
+        <td th:text="${rd.endDate}"></td>
+        <td th:text="${rd.status}"></td>
+    </tr>
+</table>
+
+<br>
+<a href="/customer/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
