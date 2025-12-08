@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Select Customer to Chat</title>
+</head>
+<body>
+
+<h2>Select Customer for Chat</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Chat</th>
+    </tr>
+
+    <tr th:each="cust : ${customers}">
+        <td th:text="${cust.id}"></td>
+        <td th:text="${cust.name}"></td>
+        <td th:text="${cust.email}"></td>
+        <td>
+            <a th:href="@{/admin/chat/{id}(id=${cust.id})}">Chat</a>
+        </td>
+    </tr>
+
+</table>
+
+<a href="/admin/dashboard">Back</a>
+
+</body>
+</html>

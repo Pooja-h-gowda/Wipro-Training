@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Loan List</title>
+</head>
+<body>
+
+<h1>Customer Loan Requests</h1>
+
+<div th:if="${error}" style="color:red; font-weight:bold;">
+    <p th:text="${error}"></p>
+</div>
+
+<div th:if="${success}" style="color:green; font-weight:bold;">
+    <p th:text="${success}"></p>
+</div>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Loan ID</th>
+        <th>Customer ID</th>
+        <th>Amount</th>
+        <th>Interest Rate</th>
+        <th>Months</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="loan : ${loans}">
+        <td th:text="${loan.loanId}">1</td>
+        <td th:text="${loan.customerId}">101</td>
+        <td th:text="${loan.amount}">50000</td>
+        <td th:text="${loan.interestRate}">10.5</td>
+        <td th:text="${loan.months}">12</td>
+        <td th:text="${loan.status}">PENDING</td>
+
+        <td>
+            <a th:href="@{/admin/loans/approve/{loanId}(loanId=${loan.loanId})}">
+                Approve
+            </a>
+            |
+            <a th:href="@{/admin/loans/deny/{loanId}(loanId=${loan.loanId})}">
+                Deny
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+<a th:href="@{/admin/dashboard}">Back to Dashboard</a>
+
+</body>
+</html>

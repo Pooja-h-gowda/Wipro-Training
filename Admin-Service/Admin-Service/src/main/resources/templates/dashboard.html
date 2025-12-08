@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #eef1f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .btn {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .logout {
+            background: red;
+        }
+
+        .logout:hover {
+            background: darkred;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Welcome Admin!</h1>
+
+    <p><b>Name:</b> <span th:text="${admin.name}"></span></p>
+    <p><b>Email:</b> <span th:text="${admin.email}"></span></p>
+
+    <form action="/admin/customers" method="get">
+        <button class="btn">View Registered Customers</button>
+    </form>
+
+    <form action="/admin/loans" method="get">
+        <button class="btn">View Loan Requests</button>
+    </form>
+
+    <form action="/admin/chat/customers" method="get">
+        <button class="btn">Chat With Customers</button>
+    </form>
+
+    <form action="/admin/logout" method="get">
+        <button class="btn logout">Logout</button>
+    </form>
+
+</div>
+
+</body>
+</html> 
