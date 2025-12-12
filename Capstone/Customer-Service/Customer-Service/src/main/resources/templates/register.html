@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Register</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* full screen height */
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .msg {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Customer Registration</h2>
+
+    <form action="/customer/register" method="post">
+
+        Name:
+        <input type="text" name="name" required minlength="3" placeholder="Enter your full name">
+
+        Email:
+        <input type="email" name="email" required placeholder="Enter a valid email">
+
+        Phone:
+        <input type="text" name="phone" required maxlength="10" pattern="[0-9]{10}" placeholder="10-digit phone number">
+
+        Password:
+        <input type="password" name="password" required minlength="4" placeholder="Minimum 4 characters">
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p class="msg" th:if="${message}" style="color:green;" th:text="${message}"></p>
+    <p class="msg" th:if="${error}" style="color:red;" th:text="${error}"></p>
+
+    <p style="margin-top:10px;">
+        Already have an account?
+        <a href="/customer/login">Login here</a>
+    </p>
+
+</div>
+
+</body>
+</html>

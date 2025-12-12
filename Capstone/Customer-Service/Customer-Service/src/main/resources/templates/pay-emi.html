@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pay EMI</title>
+</head>
+<body>
+
+<h2>Pay Loan EMI</h2>
+
+<div th:if="${error}" style="color:red;">
+    <p th:text="${error}"></p>
+</div>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Loan ID</th>
+        <td th:text="${loan.loanId}"></td>
+    </tr>
+
+    <tr>
+        <th>Total Loan Amount</th>
+        <td th:text="${loan.amount}"></td>
+    </tr>
+
+    <tr>
+        <th>EMI Amount</th>
+        <td th:text="${loan.emiAmount}"></td>
+    </tr>
+
+    <tr>
+        <th>Remaining Amount</th>
+        <td th:text="${loan.remainingAmount}"></td>
+    </tr>
+</table>
+
+<br>
+
+<form action="/customer/loan/pay" method="post">
+    <input type="hidden" name="loanId" th:value="${loan.loanId}">
+    <button type="submit">Pay EMI</button>
+</form>
+
+<br>
+<a href="/customer/loan/myloans">Back to Loans</a>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Fixed Deposits</title>
+</head>
+<body>
+
+<h2>My Fixed Deposits</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>FD ID</th>
+        <th>Amount</th>
+        <th>Interest Rate</th>
+        <th>Months</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+    </tr>
+
+    <tr th:each="fd : ${fds}">
+        <td th:text="${fd.fdId}"></td>
+        <td th:text="${fd.depositAmount}"></td>
+        <td th:text="${fd.interestRate}"></td>
+        <td th:text="${fd.durationMonths}"></td>
+        <td th:text="${fd.startDate}"></td>
+        <td th:text="${fd.endDate}"></td>
+        <td th:text="${fd.status}"></td>
+    </tr>
+</table>
+
+<br>
+<a href="/customer/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

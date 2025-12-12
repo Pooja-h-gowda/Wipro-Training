@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Chat</title>
+</head>
+<body>
+
+<h2>Chat with Admin</h2>
+
+<div style="border:1px solid black; padding:10px; width:400px; height:300px; overflow-y:scroll;">
+    <div th:each="msg : ${messages}">
+        <p>
+            <b th:text="${msg.sender}"></b> :
+            <span th:text="${msg.message}"></span>
+            <br>
+            <small th:text="${msg.timestamp}"></small>
+        </p>
+        <hr>
+    </div>
+</div>
+
+<br>
+
+<form action="/customer/chat/send" method="post">
+    <input type="text" name="message" placeholder="Type your message..." required>
+    <button type="submit">Send</button>
+</form>
+
+<a href="/customer/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

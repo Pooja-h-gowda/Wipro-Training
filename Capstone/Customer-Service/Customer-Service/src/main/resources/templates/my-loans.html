@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Loans</title>
+</head>
+<body>
+
+<h2>My Loan Requests</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Loan ID</th>
+        <th>Amount</th>
+        <th>Months</th>
+        <th>Interest</th>
+        <th>EMI</th>
+        <th>Remaining</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="loan : ${loans}">
+        <td th:text="${loan.loanId}"></td>
+        <td th:text="${loan.amount}"></td>
+        <td th:text="${loan.months}"></td>
+        <td th:text="${loan.interestRate}"></td>
+
+        <!-- NEW: EMI & Remaining -->
+        <td th:text="${loan.emiAmount != null ? #numbers.formatDecimal(loan.emiAmount, 1, 2) : '-'}"></td>
+        <td th:text="${loan.remainingAmount != null ? loan.remainingAmount : '-'}"></td>
+
+        <td th:text="${loan.status}"></td>
+
+        <td>
+            
+            <a th:if="${loan.status == 'APPROVED' and loan.remainingAmount > 0}"
+               th:href="@{/customer/loan/pay(loanId=${loan.loanId})}">
+                Pay EMI
+            </a>
+
+            <!-- If loan is closed -->
+            <span th:if="${loan.status == 'CLOSED'}">PAID</span>
+
+            <!-- For pending or rejected -->
+            <span th:if="${loan.status == 'PENDING' or loan.status == 'REJECTED'}">-</span>
+        </td>
+    </tr>
+</table>
+
+<br>
+<a href="/customer/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
