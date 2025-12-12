@@ -1,0 +1,7 @@
+com\dependencyinjection\DelegateConstructorDI.class
+com\dependencyinjection\DelegateFieldDI.class
+com\dependencyinjection\DelegateSetterDI.class
+com\dependencyinjection\Manager.class
+com\dependencyinjection\AppConfig.class
+com\dependencyinjection\Allocator.class
+com\dependencyinjection\App.class
